@@ -20,7 +20,7 @@ int main()
 
 	// create window
 	c14::g_renderer.CreateWindow("Neumont", 800, 600);
-	c14::g_renderer.setClearColor(c14::Color{ 30, 30, 30, 0 });
+	c14::g_renderer.setClearColor(c14::Color{ 0, 0, 0, 0 });
 
 
 	{

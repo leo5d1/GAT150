@@ -1,4 +1,5 @@
 #include "AudioSystem.h" 
+#include "Core/Logger.h"
 #include <fmod.hpp> 
 
 namespace c14
@@ -35,6 +36,11 @@ namespace c14
 		{
 			FMOD::Sound* sound = nullptr;
 			m_fmodSystem->createSound(filename.c_str(), FMOD_DEFAULT, 0, &sound);
+			if (sound == nullptr)
+			{
+				LOG("Error creating sound $s.", filename.c_str());
+			}
+
 			m_sounds[name] = sound;
 		}
 	}
@@ -42,15 +48,21 @@ namespace c14
 	void AudioSystem::PlayAudio(const std::string& name)
 	{
 		auto iter = m_sounds.find(name);
-			if (iter != m_sounds.end())
-			{
 
-				FMOD::Sound* sound = iter->second;
-				sound->setMode(FMOD_LOOP_OFF);
+		if (iter == m_sounds.end())
+		{
+			LOG("ERROR could not find sound %s.", name.c_str());
+		}
 
-				FMOD::Channel* channel;
-				m_fmodSystem->playSound(sound, 0, false, &channel);
-			}
+		if (iter != m_sounds.end())
+		{
+
+			FMOD::Sound* sound = iter->second;
+			sound->setMode(FMOD_LOOP_OFF);
+
+			FMOD::Channel* channel;
+			m_fmodSystem->playSound(sound, 0, false, &channel);
+		}
 
 	}
 }
