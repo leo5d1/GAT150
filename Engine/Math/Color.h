@@ -1,5 +1,7 @@
 #pragma once
 #include <cstdint>
+#include <iostream>
+#include <string>
 
 namespace c14
 {
@@ -9,23 +11,15 @@ namespace c14
 		uint8_t g;
 		uint8_t b;
 		uint8_t a;
+
+		static const Color white;
+		static const Color black;
+		static const Color red;
+		static const Color green;
+		static const Color blue;
 	};
 
-	inline std::istream& operator >> (std::istream& stream, Color& color)
-	{
-		std::string line;
-		std::getline(stream, line);
-
-		std::string r = line.substr(line.find("{") + 1, line.find(",") - line.find(",") - 1);
-		color.r = (uint8_t)(std::stof(r) * 255);
-		std::string g = line.substr(line.find(",") + 1, line.find(",") - line.find(",") - 1);
-		color.g = (uint8_t)(std::stof(g) * 255);
-		std::string b = line.substr(line.find(",") + 1, line.find(",") - line.find("{") - 1);
-		color.b = (uint8_t)(std::stof(b) * 255);
-		color.a = 255;
-
-		return stream;
-	}
+	std::istream& operator >> (std::istream& stream, Color& color);
 
 
 }

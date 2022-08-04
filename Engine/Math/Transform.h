@@ -7,6 +7,6 @@ namespace c14
 	{
 		Vector2 position;
 		float rotation{ 0 };
-		float scale{ 1 };
+		Vector2 scale{ 1, 1 };
 	};
 }

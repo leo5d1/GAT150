@@ -16,7 +16,7 @@ namespace c14
 		virtual void Draw(Renderer& renderer);
 
 		virtual void OnCollision(Actor* other) { }
-		float GetRadius() { return m_model.GetRadius(); }
+		float GetRadius() { return m_model.GetRadius() * std::max(m_transform.scale.x, m_transform.scale.y); }
 
 		std::string& GetTag() { return m_tag; }
 

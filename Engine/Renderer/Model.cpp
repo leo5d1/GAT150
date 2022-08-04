@@ -11,7 +11,7 @@ namespace c14
 		m_radius = CalculateRadius();
 	}
 
-	void Model::Draw(Renderer& renderer, const Vector2& position, float angle, float scale)
+	void Model::Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& scale)
 	{
 		// draw model
 		for (int i = 0; i < m_points.size() - 1; i++)

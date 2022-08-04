@@ -14,14 +14,15 @@ int main()
 	c14::g_inputSystem.Initialize();
 	c14::g_audio.Initialize();
 
-	// create texture
-	std::shared_ptr<c14::Texture> texture = std::make_shared<c14::Texture>();
-	texture->Create(c14::g_renderer, "sf2.bmp");
-
 	// create window
 	c14::g_renderer.CreateWindow("Neumont", 800, 600);
 	c14::g_renderer.setClearColor(c14::Color{ 0, 0, 0, 0 });
 
+	// create texture
+	std::shared_ptr<c14::Texture> texture = std::make_shared<c14::Texture>();
+	texture->Create(c14::g_renderer, "sf2.bmp");
+
+	float angle = 0;
 
 	{
 		bool quit = false;
@@ -34,10 +35,12 @@ int main()
 
 			if (c14::g_inputSystem.GetKeyDown(c14::key_escape)) { quit = true; }
 
+			angle += 360.0f * c14::g_time.deltaTime;
+
 			// renderer
 			c14::g_renderer.BeginFrame();
 
-			c14::g_renderer.Draw(texture, { 40, 30 }, 0);
+			c14::g_renderer.Draw(texture, { 400, 300 }, angle, { 2, 2 }, {0.5f, 1.0f});
 
 			c14::g_renderer.EndFrame();
 		}
