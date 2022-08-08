@@ -8,7 +8,7 @@ struct SDL_Window;
 
 namespace c14
 {
-	class Transform;
+	struct Transform;
 
 	class Renderer
 	{

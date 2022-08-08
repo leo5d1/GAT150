@@ -20,21 +20,35 @@ int main()
 
 	// create texture
 	std::shared_ptr<c14::Texture> texture = std::make_shared<c14::Texture>();
-	texture->Create(c14::g_renderer, "sf2.bmp");
+	texture->Create(c14::g_renderer, "Textures/SpaceShip.png");
 
-	// create actors
+	// create audio
+	c14::g_audio.AddAudio("laser", "Audio/laser.wav");
+
+	// create scene
 	c14::Scene scene;
 
-
-	c14::Transform transform{ { 100, 100 }, 90, { 3, 3 } };
+	// Player Character
+	c14::Transform transform{ { 400, 300 }, 90, { 1, 1 } };
 	std::unique_ptr<c14::Actor> player = std::make_unique<c14::Actor>();
-	std::unique_ptr<c14::PlayerComponent> component = std::make_unique<c14::PlayerComponent>();
-	player->AddComponent(std::move(component));
-	std::unique_ptr<c14::SpriteComponent> scomponent = std::make_unique<c14::SpriteComponent>();
-	scomponent->m_texture = texture;
-	player->AddComponent(std::move(scomponent));
-	std::unique_ptr<c14::PlayerComponent> pcomponent = std::make_unique<c14::PlayerComponent>();
-	player->AddComponent(std::move(pcomponent));
+
+	// player comp
+	std::unique_ptr<c14::PlayerComponent> Pcomponent = std::make_unique<c14::PlayerComponent>();
+	player->AddComponent(std::move(Pcomponent));
+
+	// sprite comp
+	std::unique_ptr<c14::SpriteComponent> Scomponent = std::make_unique<c14::SpriteComponent>();
+	Scomponent->m_texture = texture;
+	player->AddComponent(std::move(Scomponent));
+
+	// audio comp
+	std::unique_ptr<c14::AudioComponent> Acomponent = std::make_unique<c14::AudioComponent>();
+	Acomponent->m_soundname = "laser";
+	player->AddComponent(std::move(Acomponent));
+
+	// physics comp
+	std::unique_ptr<c14::PhysicsComponent> PHcomponent = std::make_unique<c14::PhysicsComponent>();
+	player->AddComponent(std::move(PHcomponent));
 
 	scene.Add(std::move(player));
 
@@ -52,14 +66,14 @@ int main()
 			if (c14::g_inputSystem.GetKeyDown(c14::key_escape)) { quit = true; }
 
 			// update Scene
-			angle += 360.0f * c14::g_time.deltaTime;
+			//angle += 360.0f * c14::g_time.deltaTime;
 			scene.Update();
 
 			// renderer
 			c14::g_renderer.BeginFrame();
 
 			scene.Draw(c14::g_renderer);
-			c14::g_renderer.Draw(texture, { 400, 300 }, angle, { 2, 2 }, {0.5f, 0.5f});
+			//c14::g_renderer.Draw(texture, { 400, 300 }, angle, { 2, 2 }, {0.5f, 0.5f});
 
 			c14::g_renderer.EndFrame();
 		}

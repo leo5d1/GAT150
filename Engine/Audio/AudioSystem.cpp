@@ -45,7 +45,7 @@ namespace c14
 		}
 	}
 
-	void AudioSystem::PlayAudio(const std::string& name)
+	void AudioSystem::PlayAudio(const std::string& name, const bool loop)
 	{
 		auto iter = m_sounds.find(name);
 
@@ -58,7 +58,7 @@ namespace c14
 		{
 
 			FMOD::Sound* sound = iter->second;
-			sound->setMode(FMOD_LOOP_OFF);
+			sound->setMode(loop);
 
 			FMOD::Channel* channel;
 			m_fmodSystem->playSound(sound, 0, false, &channel);

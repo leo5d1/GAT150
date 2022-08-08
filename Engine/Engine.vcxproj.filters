@@ -89,6 +89,12 @@
     <ClCompile Include="Components\SpriteComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Components\PhysicsComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\AudioComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathUtils.h">
@@ -154,9 +160,6 @@
     <ClInclude Include="Core\Logger.h">
       <Filter>Source\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Component.h">
-      <Filter>Source\Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Components\PlayerComponent.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
@@ -165,6 +168,15 @@
     </ClInclude>
     <ClInclude Include="Components\SpriteComponent.h">
       <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\AudioComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\PhysicsComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component.h">
+      <Filter>Source\Framework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

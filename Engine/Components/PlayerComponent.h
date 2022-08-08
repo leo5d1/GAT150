@@ -1,6 +1,5 @@
 #pragma once
 #include "Framework/Component.h"
-#include "Framework/Actor.h"
 #include "Engine.h"
 
 namespace c14
@@ -14,10 +13,5 @@ namespace c14
 
 		void Update() override;
 
-		Actor actor;
-
-	private:
-		float m_speed{ 0 };
-		float m_maxSpeed{ 100 };
 	};
 }
