@@ -6,14 +6,19 @@
 #include "Core/File.h"
 #include "Core/Time.h"
 
-#include "Input/InputSystem.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/Text.h"
-#include "Renderer/Font.h"
-
 #include "Framework/Scene.h"
 #include "Framework/Game.h"
 
+#include "Components/PlayerComponent.h"
+#include "Components/SpriteComponent.h"
+#include "Components/PlayerComponent.h"
+
+#include "Renderer/Renderer.h"
+#include "Renderer/Text.h"
+#include "Renderer/Font.h"
+#include "Renderer/Texture.h"
+
+#include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
 
 #include <memory>
