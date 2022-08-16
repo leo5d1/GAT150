@@ -9,6 +9,9 @@ int main()
 
 	c14::SetFilePath("../Assets");
 
+	rapidjson::Document document;
+	bool success = c14::json::Load("json.txt", document);
+
 	// initialize systems
 	c14::g_renderer.Initialize();
 	c14::g_inputSystem.Initialize();

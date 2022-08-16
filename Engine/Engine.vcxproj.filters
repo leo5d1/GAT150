@@ -113,6 +113,9 @@
     <ClCompile Include="Resource\ResourceManager.cpp">
       <Filter>Source\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="Serialization\Json.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathUtils.h">
@@ -214,7 +217,7 @@
     <ClInclude Include="Resource\ResourceManager.h">
       <Filter>Source\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="Json.h">
+    <ClInclude Include="Serialization\Json.h">
       <Filter>Serialization</Filter>
     </ClInclude>
   </ItemGroup>
