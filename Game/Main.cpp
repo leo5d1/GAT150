@@ -12,6 +12,14 @@ int main()
 	rapidjson::Document document;
 	bool success = c14::json::Load("json.txt", document);
 
+	int i1;
+	c14::json::Get(document, "integer1", i1);
+	std::cout << i1 << std::endl;
+
+	int i2;
+	c14::json::Get(document, "integer2", i2);
+	std::cout << i2 << std::endl;
+
 	// initialize systems
 	c14::g_renderer.Initialize();
 	c14::g_inputSystem.Initialize();
