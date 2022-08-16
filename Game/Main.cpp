@@ -26,8 +26,8 @@ int main()
 
 	//std::shared_ptr<c14::Model> model = std::make_shared<c14::Model>();
 	//model->Create("Models/Player.txt");
-	/*std::shared_ptr<c14::Model> model = c14::g_resourcemanager.Get<c14::Model>("Models/Player.txt");
-	std::shared_ptr<c14::Model> model2 = c14::g_resourcemanager.Get<c14::Model>("Models/Player.txt");*/
+	std::shared_ptr<c14::Model> model = c14::g_resourcemanager.Get<c14::Model>("Models/Player.txt");
+	//std::shared_ptr<c14::Model> model2 = c14::g_resourcemanager.Get<c14::Model>("Models/Player.txt");
 
 	// create audio
 	c14::g_audio.AddAudio("laser", "Audio/laser.wav");
