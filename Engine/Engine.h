@@ -14,11 +14,15 @@
 #include "Components/PlayerComponent.h"
 #include "Components/AudioComponent.h"
 #include "Components/PhysicsComponent.h"
+#include "Components/ModelComponent.h"
 
 #include "Renderer/Renderer.h"
 #include "Renderer/Text.h"
 #include "Renderer/Font.h"
 #include "Renderer/Texture.h"
+#include "Renderer/Model.h"
+
+#include "Resource/ResourceManager.h"
 
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
@@ -31,4 +35,5 @@ namespace c14
 	extern Renderer g_renderer;
 	extern Time g_time;
 	extern AudioSystem g_audio;
+	extern ResourceManager g_resourcemanager;
 }

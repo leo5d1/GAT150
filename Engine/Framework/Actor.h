@@ -17,6 +17,8 @@ namespace c14
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer);
 
+		void AddChild(std::unique_ptr<Actor> child);
+
 		void AddComponent(std::unique_ptr<Component> component);
 
 		template<typename T>
@@ -39,7 +41,9 @@ namespace c14
 		float m_damping = 1;
 
 		Scene* m_scene = nullptr;
+		Actor* m_parent = nullptr;
 		std::vector<std::unique_ptr<Component>> m_components;
+		std::vector<std::unique_ptr<Actor>> m_children;
 	};
 
 	template<typename T>

@@ -6,7 +6,7 @@ namespace c14
 {
 	void SpriteComponent::Update()
 	{
-
+		//
 	}
 
 	void SpriteComponent::Draw(Renderer& renderer)
