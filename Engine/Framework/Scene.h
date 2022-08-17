@@ -10,7 +10,7 @@ namespace c14
 	class Renderer;
 	class Game;
 
-	class Scene
+	class Scene : public ISerializable
 	{
 	public:
 		Scene() = default;
@@ -20,7 +20,10 @@ namespace c14
 		void Update();
 		void Draw(Renderer& renderer);
 
-		void Add(std::unique_ptr<Actor> actor);
+		virtual bool Write(const rapidjson::Value& value) const override;
+		virtual bool Read(const rapidjson::Value& value) override;
+		
+		void AddActor(std::unique_ptr<Actor> actor);
 
 		template<typename T>
 		T* GetActor();

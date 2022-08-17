@@ -2,16 +2,27 @@
 #include "Vector2.h"
 #include "Matrix3x3.h"
 #include "MathUtils.h"
+#include "Serialization/Serializable.h"
 
 namespace c14
 {
-	struct Transform
+	struct Transform : public ISerializable
 	{
 		Vector2 position;
 		float rotation{ 0 };
 		Vector2 scale{ 1, 1 };
 
 		Matrix3x3 matrix;
+
+		Transform() = default;
+		Transform(const Vector2& position, float rotation, const Vector2& scale) :
+			position{ position },
+			rotation{ rotation },
+			scale{ scale }
+		{}
+
+		virtual bool Write(const rapidjson::Value& value) const override;
+		virtual bool Read(const rapidjson::Value& value) override;
 
 		void Update()
 		{

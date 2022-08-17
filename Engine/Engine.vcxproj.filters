@@ -33,7 +33,7 @@
     <Filter Include="Source\Resource">
       <UniqueIdentifier>{9481ae4b-de1e-4274-a6fc-0c07ea28b59d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Serialization">
+    <Filter Include="Source\Serialization">
       <UniqueIdentifier>{363d551c-2574-4251-8f5e-01f3e0792601}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -114,7 +114,10 @@
       <Filter>Source\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Serialization\Json.cpp">
-      <Filter>Serialization</Filter>
+      <Filter>Source\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Transform.cpp">
+      <Filter>Source\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -218,7 +221,10 @@
       <Filter>Source\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Serialization\Json.h">
-      <Filter>Serialization</Filter>
+      <Filter>Source\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Serialization\Serializable.h">
+      <Filter>Source\Serialization</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

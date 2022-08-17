@@ -28,7 +28,7 @@ namespace c14
 		float thrust = 0;
 		if (c14::g_inputSystem.GetKeyState(c14::key_up) == InputSystem::State::Held)
 		{
-			thrust = 100;
+			thrust = speed;
 			
 		}
 
@@ -50,6 +50,19 @@ namespace c14
 			//force = (Vector2{ 400, 300 } - m_owner->m_transform.position).Normalized() * 100;
 			//component->ApplyForce(force);
 		}
+	}
+
+	bool PlayerComponent::Write(const rapidjson::Value& value) const
+	{
+		//
+		return true;
+	}
+
+	bool PlayerComponent::Read(const rapidjson::Value& value)
+	{
+		READ_DATA(value, speed);
+
+		return true;
 	}
 }
 

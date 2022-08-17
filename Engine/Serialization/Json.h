@@ -2,6 +2,8 @@
 #include "rapidjson/document.h"
 #include <string>
 
+#define READ_DATA(value, data) c14::json::Get(value, #data, data);
+
 namespace c14
 {
 	struct Vector2;

@@ -8,6 +8,18 @@ namespace c14
 
 	}
 
+	bool AudioComponent::Write(const rapidjson::Value& value) const
+	{
+		//
+		return true;
+	}
+
+	bool AudioComponent::Read(const rapidjson::Value& value)
+	{
+		//
+		return true;
+	}
+
 	void AudioComponent::Play()
 	{
 		g_audio.PlayAudio(m_soundname, m_loop);

@@ -12,6 +12,10 @@ namespace c14
 		PhysicsComponent() = default;
 
 		void Update() override;
+
+		virtual bool Write(const rapidjson::Value& value) const override;
+		virtual bool Read(const rapidjson::Value& value) override;
+
 		void ApplyForce(const Vector2& force) { m_acceleration += force; }
 
 	public:

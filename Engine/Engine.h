@@ -38,5 +38,5 @@ namespace c14
 	extern Renderer g_renderer;
 	extern Time g_time;
 	extern AudioSystem g_audio;
-	extern ResourceManager g_resourcemanager;
+	extern ResourceManager g_resources;
 }
