@@ -25,8 +25,13 @@
                "damping":0.99
             },
             {
-               "type":"SpriteComponent",
-               "texture_name":"Textures/blue_01.png"
+               "type":"SpriteAnimComponent",
+               "texture_name":"Textures/fire-skull-no-fire.png",
+               "fps":12,
+               "num_columns":4,
+               "num_rows":1,
+               "start_frame":1,
+               "end_frame":1
             }
          ]
       }

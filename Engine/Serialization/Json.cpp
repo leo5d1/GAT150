@@ -3,6 +3,7 @@
 #include "Core/Logger.h"
 #include "Math/Vector2.h"
 #include "Math/Color.h"
+#include "Math/Rect.h"
 #include <fstream>
 
 
@@ -15,7 +16,7 @@ namespace c14::json
 		// !! https://riptutorial.com/cplusplus/example/1625/opening-a-file 
 
 		std::ifstream stream(filename);
-		if (stream.is_open() == false)
+		if (!stream.is_open())
 		{
 			LOG("error opening file %s.", filename.c_str());
 			return false;
@@ -110,8 +111,8 @@ namespace c14::json
 
 	bool Get(const rapidjson::Value& value, const std::string& name, Color& data)
 	{
-		// check if 'name' member exists and is an array with 2 elements 
-		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 2)
+		// check if 'name' member exists and is an array with 4 elements 
+		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4)
 		{
 			LOG("error reading json data %s", name.c_str());
 			return false;
@@ -132,6 +133,28 @@ namespace c14::json
 
 			data[i] = array[i].GetInt();
 		}
+
+		return true;
+	}
+
+	bool Get(const rapidjson::Value& value, const std::string& name, Rect& data)
+	{
+		// check if 'name' member exists and is an array with 4 elements 
+		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4)
+		{
+			LOG("error reading json data %s", name.c_str());
+			return false;
+
+		}
+
+		// create json array object 
+		auto& array = value[name.c_str()];
+		// get array values 
+
+		data.x = array[0].GetInt();
+		data.y = array[1].GetInt();
+		data.w = array[2].GetInt();
+		data.h = array[3].GetInt();
 
 		return true;
 	}

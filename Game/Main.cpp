@@ -17,13 +17,13 @@ int main()
 
 	// create window
 	c14::g_renderer.CreateWindow("Neumont", 800, 600);
-	c14::g_renderer.setClearColor(c14::Color{ 0, 0, 0, 0 });
+	c14::g_renderer.setClearColor(c14::Color{ 20, 20, 20, 0 });
 
 	// create scene
 	c14::Scene scene;
 
 	rapidjson::Document document;
-	bool success = c14::json::Load("level.txt", document);
+	bool success = c14::json::Load("levels/level.txt", document);
 
 	scene.Read(document);
 

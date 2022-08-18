@@ -48,7 +48,7 @@ namespace c14
 		bool m_destroy = false;
 		//physics
 		Vector2 m_velocity;
-		float m_damping = 1;
+		float damping = 1;
 
 		Scene* m_scene = nullptr;
 		Actor* m_parent = nullptr;

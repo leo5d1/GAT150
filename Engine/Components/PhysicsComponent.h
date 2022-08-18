@@ -22,6 +22,6 @@ namespace c14
 		Vector2 m_velocity;
 		Vector2 m_acceleration;
 
-		float m_damping = 1;
+		float damping = 1;
 	};
 }

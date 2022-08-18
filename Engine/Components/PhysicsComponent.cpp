@@ -7,7 +7,7 @@ namespace c14
 	{
 		m_velocity += m_acceleration * g_time.deltaTime;
 		m_owner->m_transform.position += m_velocity * g_time.deltaTime;
-		m_velocity *= m_damping;
+		m_velocity *= damping;
 
 		m_acceleration = Vector2::zero;
 	}
@@ -20,7 +20,7 @@ namespace c14
 
 	bool PhysicsComponent::Read(const rapidjson::Value& value)
 	{
-		READ_DATA(value, m_damping);
+		READ_DATA(value, damping);
 
 		return true;
 	}

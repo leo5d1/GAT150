@@ -1,5 +1,5 @@
 #include "Scene.h"
-//#include "Factory.h"
+#include "Factory.h"
 #include <iostream>
 
 namespace c14
@@ -67,17 +67,17 @@ namespace c14
 			std::string type;
 			READ_DATA(actorValue, type);
 
-			/*
+			
 			auto actor = Factory::Instance().Create<Actor>(type);
 			if (actor)
 			{
 				// read actor
 				actor->Read(actorValue);
-				Add(actor);
+				AddActor(std::move(actor));
 			}
-			*/
+			
 		}
-
+		
 		return true;
 	}
 
