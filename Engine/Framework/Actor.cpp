@@ -1,5 +1,5 @@
 #include "Actor.h"
-//#include "Factory.h"
+#include "Factory.h"
 #include "Components/RenderComponent.h"
 
 namespace c14
@@ -56,14 +56,14 @@ namespace c14
 				std::string type;
 				READ_DATA(componentValue, type);
 				
-				/*
+				
 				auto component = Factory::Instance().Create<Component>(type);
-				if (componenet)
+				if (component)
 				{
-					component->Read(componenetValue);
+					component->Read(componentValue);
 					AddComponent(std::move(component));
 				}
-				*/
+				
 			}
 		}
 

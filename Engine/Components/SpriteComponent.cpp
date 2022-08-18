@@ -1,6 +1,7 @@
 #include "SpriteComponent.h"
 #include "Renderer/Renderer.h"
 #include "Framework/Actor.h"
+#include "Engine.h"
 
 namespace c14
 {
@@ -17,7 +18,11 @@ namespace c14
 
 	bool SpriteComponent::Read(const rapidjson::Value& value)
 	{
-		//
+		std::string texture_name;
+		READ_DATA(value, texture_name);
+
+		m_texture = g_resources.Get<Texture>(texture_name);
+
 		return true;
 	}
 

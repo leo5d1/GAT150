@@ -21,8 +21,12 @@
                "speed":200
             },
             {
-               "type":"ModelComponent",
-               "model_name":"Models/Player.txt"
+               "type":"PhysicsComponent",
+               "damping":0.99
+            },
+            {
+               "type":"SpriteComponent",
+               "texture_name":"Textures/blue_01.png"
             }
          ]
       }

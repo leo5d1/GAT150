@@ -16,7 +16,7 @@ namespace c14
 		Texture() = default;
 		~Texture();
 
-		bool Create(const std::string& filename, ...) override;
+		bool Create(const std::string filename, ...) override;
 		bool Create(Renderer& renderer, const std::string& filename);
 
 		Vector2 GetSize() const;

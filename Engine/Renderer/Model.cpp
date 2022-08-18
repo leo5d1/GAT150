@@ -15,7 +15,7 @@ namespace c14
 		m_radius = CalculateRadius();
 	}
 
-	bool Model::Create(const std::string& filename, ...)
+	bool Model::Create(const std::string filename, ...)
 	{
 		if (!Load(filename))
 		{

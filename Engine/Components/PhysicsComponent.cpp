@@ -20,7 +20,8 @@ namespace c14
 
 	bool PhysicsComponent::Read(const rapidjson::Value& value)
 	{
-		//
+		READ_DATA(value, m_damping);
+
 		return true;
 	}
 }

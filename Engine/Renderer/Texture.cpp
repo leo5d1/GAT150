@@ -14,7 +14,7 @@ namespace c14
 		}
 	}
 
-	bool Texture::Create(const std::string& filename, ...)
+	bool Texture::Create(const std::string filename, ...)
 	{
 		// va_list - type to hold information about variable arguments 
 		va_list args;
