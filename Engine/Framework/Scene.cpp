@@ -67,7 +67,6 @@ namespace c14
 			std::string type;
 			READ_DATA(actorValue, type);
 
-			
 			auto actor = Factory::Instance().Create<Actor>(type);
 			if (actor)
 			{

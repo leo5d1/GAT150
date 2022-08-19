@@ -19,6 +19,9 @@ int main()
 	c14::g_renderer.CreateWindow("Neumont", 800, 600);
 	c14::g_renderer.setClearColor(c14::Color{ 20, 20, 20, 0 });
 
+	c14::Engine::Instance().Register();
+
+
 	// create scene
 	c14::Scene scene;
 
@@ -26,7 +29,6 @@ int main()
 	bool success = c14::json::Load("levels/level.txt", document);
 
 	scene.Read(document);
-
 	{
 		bool quit = false;
 		while (!quit)
