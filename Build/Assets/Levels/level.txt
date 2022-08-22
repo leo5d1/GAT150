@@ -22,7 +22,7 @@
             },
             {
                "type":"PhysicsComponent",
-               "damping":0.99
+               "damping":0.989
             },
             {
                "type":"SpriteAnimComponent",

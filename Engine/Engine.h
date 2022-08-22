@@ -9,6 +9,8 @@
 #include "Math/MathUtils.h"
 #include "Math/Random.h"
 
+#include "Physics/PhysicsSystem.h"
+
 #include "Framework/Scene.h"
 #include "Framework/Game.h"
 #include "Framework/Factory.h"
@@ -42,6 +44,7 @@ namespace c14
 	extern AudioSystem g_audio;
 	extern Time g_time;
 	extern ResourceManager g_resources;
+	extern PhysicsSystem g_physicsSystem;
 
 	class Engine : public Singleton<Engine>
 	{

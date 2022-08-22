@@ -14,6 +14,7 @@ int main()
 	c14::g_inputSystem.Initialize();
 	c14::g_audio.Initialize();
 	c14::g_resources.Initialize();
+	c14::g_physicsSystem.Initialize();
 
 	// create window
 	c14::g_renderer.CreateWindow("Neumont", 800, 600);
@@ -37,6 +38,7 @@ int main()
 			c14::g_time.Tick();
 			c14::g_inputSystem.Update();
 			c14::g_audio.Update();
+			c14::g_physicsSystem.Update();
 
 			if (c14::g_inputSystem.GetKeyDown(c14::key_escape)) { quit = true; }
 
