@@ -11,6 +11,7 @@ namespace c14
 	public:
 		GameObject() = default;
 
+		virtual void Initialize() = 0;
 		virtual void Update() = 0;
 	};
 }

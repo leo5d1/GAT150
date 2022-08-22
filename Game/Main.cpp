@@ -30,6 +30,7 @@ int main()
 	bool success = c14::json::Load("levels/level.txt", document);
 
 	scene.Read(document);
+	scene.Initialize();
 	{
 		bool quit = false;
 		while (!quit)

@@ -4,6 +4,14 @@
 
 namespace c14
 {
+	void Scene::Initialize()
+	{
+		for (auto& actor : m_actors)
+		{
+			actor->Initialize();
+		}
+	}
+
 	void Scene::Update()
 	{
 		auto iter = m_actors.begin();
@@ -85,6 +93,8 @@ namespace c14
 		actor->m_scene = this;
 		m_actors.push_back(std::move(actor));
 	}
+
+	
 
 }
 

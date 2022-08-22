@@ -10,14 +10,15 @@ namespace c14
 	class Renderer;
 	class Game;
 
-	class Scene : public ISerializable
+	class Scene : public GameObject, public ISerializable
 	{
 	public:
 		Scene() = default;
 		Scene(Game* game) : m_game{ game } {}
 		~Scene() = default;
 
-		void Update();
+		void Initialize() override;
+		void Update() override;
 		void Draw(Renderer& renderer);
 
 		virtual bool Write(const rapidjson::Value& value) const override;
@@ -33,6 +34,7 @@ namespace c14
 	private:
 		Game* m_game;
 		std::list<std::unique_ptr<Actor>> m_actors;
+
 	};
 
 	template<typename T>

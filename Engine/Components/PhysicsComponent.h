@@ -16,11 +16,11 @@ namespace c14
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
-		void ApplyForce(const Vector2& force) { m_acceleration += force; }
+		virtual void ApplyForce(const Vector2& force) { acceleration += force; }
 
 	public:
-		Vector2 m_velocity;
-		Vector2 m_acceleration;
+		Vector2 velocity;
+		Vector2 acceleration;
 
 		float damping = 1;
 	};
