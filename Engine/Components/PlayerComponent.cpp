@@ -34,7 +34,7 @@ namespace c14
 			auto component = m_owner->GetComponent<PhysicsComponent>();
 			if (component)
 			{
-				component->ApplyForce(Vector2::up * 30);
+				component->ApplyForce(Vector2::up * 500);
 			}
 		}
 	}

@@ -67,7 +67,7 @@
          "components":[
             {
                "type":"PlayerComponent",
-               "speed":40
+               "speed":20
             },
             {
                "type":"RBPhysicsComponent",
@@ -84,12 +84,12 @@
             },
             {
                "type":"SpriteAnimComponent",
-               "texture_name":"Textures/gothic-hero-run.png",
+               "texture_name":"Textures/fire-skull-no-fire.png",
                "fps":12,
-               "num_columns":12,
+               "num_columns":4,
                "num_rows":1,
                "start_frame":1,
-               "end_frame":12
+               "end_frame":4
             }
          ]
       }
