@@ -13,7 +13,7 @@ namespace c14
 
 	void RBPhysicsComponent::Initialize()
 	{
-		g_physicsSystem.CreateBody(m_owner->m_transform.position, m_owner->m_transform.rotation, data);
+		m_body = g_physicsSystem.CreateBody(m_owner->m_transform.position, m_owner->m_transform.rotation, data);
 		m_body->SetGravityScale(data.gravity_scale);
 		m_body->SetLinearDamping(damping);
 	}

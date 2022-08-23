@@ -55,6 +55,9 @@ int main()
 		}
 	}
 
+	c14::g_physicsSystem.Shutdown();
+	c14::g_resources.Shutdown();
+	c14::g_inputSystem.Shutdown();
 	c14::g_audio.Shutdown();
 	c14::g_renderer.Shutdown();
 }
