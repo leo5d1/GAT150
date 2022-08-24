@@ -94,6 +94,11 @@ namespace c14
 		m_actors.push_back(std::move(actor));
 	}
 
+	void Scene::RemoveAll()
+	{
+		m_actors.clear();
+	}
+
 	
 
 }

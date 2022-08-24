@@ -1,5 +1,6 @@
 #pragma once
 #include "Framework/Component.h"
+#include "Audio/AudioChannel.h"
 
 namespace c14
 {
@@ -9,7 +10,9 @@ namespace c14
 	{
 	public:
 		AudioComponent() = default;
+		~AudioComponent();
 
+		void Initialize() override;
 		void Update() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;
@@ -19,10 +22,12 @@ namespace c14
 		void Stop();
 
 	public:
-		std::string m_soundname;
-		bool m_playonawake = false;
-		float m_volume = 1;
-		float m_pitch = 1;
-		bool m_loop = false;
+		AudioChannel m_channel;
+
+		std::string sound_name;
+		bool play_on_start = false;
+		float volume = 1;
+		float pitch = 1;
+		bool loop = false;
 	};
 }

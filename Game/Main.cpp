@@ -54,6 +54,7 @@ int main()
 			c14::g_renderer.EndFrame();
 		}
 	}
+	scene.RemoveAll();
 
 	c14::g_physicsSystem.Shutdown();
 	c14::g_resources.Shutdown();

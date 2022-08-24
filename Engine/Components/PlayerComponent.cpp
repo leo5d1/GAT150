@@ -1,8 +1,19 @@
 #include "PlayerComponent.h"
+#include "Engine.h"
 #include <iostream>
 
 namespace c14
 {
+	void PlayerComponent::Initialize()
+	{
+		auto component = m_owner->GetComponent<CollisionComponent>();
+		if (component)
+		{
+			component->SetCollisionEnter(std::bind(&PlayerComponent::OnCollisionEnter, this, std::placeholders::_1));
+			component->SetCollisionExit(std::bind(&PlayerComponent::OnCollisionExit, this, std::placeholders::_1));
+		}
+	}
+
 	void PlayerComponent::Update()
 	{
 		// move left/right
@@ -21,12 +32,6 @@ namespace c14
 		{
 			component->ApplyForce(direction * speed);
 		}
-
-		// edge of screen
-		// if (m_owner->m_transform.position.x > c14::g_renderer.GetWidth()) m_owner->m_transform.position.x = 0;
-		// if (m_owner->m_transform.position.x < 0) m_owner->m_transform.position.x = c14::g_renderer.GetWidth();
-		// if (m_owner->m_transform.position.y > c14::g_renderer.GetHeight()) m_owner->m_transform.position.y = 0;
-		// if (m_owner->m_transform.position.y < 0) m_owner->m_transform.position.y = c14::g_renderer.GetHeight();
 
 		// jump
 		if (g_inputSystem.GetKeyState(key_space) == InputSystem::State::Pressed)
@@ -50,6 +55,16 @@ namespace c14
 		READ_DATA(value, speed);
 
 		return true;
+	}
+
+	void PlayerComponent::OnCollisionEnter(Actor* other)
+	{
+		std::cout << "Player enter\n";
+	}
+
+	void PlayerComponent::OnCollisionExit(Actor* other)
+	{
+		std::cout << "Player exit\n";
 	}
 }
 
