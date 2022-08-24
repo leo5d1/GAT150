@@ -8,7 +8,7 @@ struct SDL_Surface;
 
 namespace c14
 {
-	class Color;
+	struct Color;
 
 	class Font : public Resource
 	{

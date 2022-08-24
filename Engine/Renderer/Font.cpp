@@ -26,10 +26,13 @@ namespace c14
 		va_start(args, filename);
 
 		// va_arg - accesses the next variadic function arguments 
-		Renderer& renderer = va_arg(args, Renderer);
+		int fontSize = va_arg(args, int);
 
 		// va_end - ends traversal of the variadic function arguments 
 		va_end(args);
+
+		Load(filename, fontSize);
+
 
 		// create texture (returns true/false if successful) 
 		return true;

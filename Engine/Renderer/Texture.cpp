@@ -40,7 +40,7 @@ namespace c14
 		}
 
 		// create texture
-		m_texture = SDL_CreateTextureFromSurface((SDL_Renderer*)&renderer, surface);
+		m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
 
 		SDL_FreeSurface(surface);
 
