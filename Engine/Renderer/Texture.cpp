@@ -31,6 +31,28 @@ namespace c14
 		return Create(renderer, filename);
 	}
 
+	bool Texture::CreateFromSurface(SDL_Surface* surface, Renderer& renderer)
+	{
+		// destroy current texture if it exists
+		if (m_texture)
+		{
+			SDL_DestroyTexture(m_texture);
+		}
+
+		// create texture
+		m_texture = SDL_CreateTextureFromSurface((SDL_Renderer*)&renderer, surface);
+
+		SDL_FreeSurface(surface);
+
+		if (!m_texture)
+		{
+			LOG(SDL_GetError());
+			return false;
+		}
+
+		return true;
+	}
+
 	bool Texture::Create(Renderer& renderer, const std::string& filename)
 	{
 		// load surface

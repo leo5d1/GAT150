@@ -72,8 +72,6 @@
             { 
                "type":"AudioComponent", 
                "sound_name":"Audio/laser.wav",
-               "volume":2,
-               "loop":true,
                "play_on_start":true 
             }, 
             {
@@ -99,6 +97,43 @@
                "end_frame":4
             }
          ]
+      },
+      { 
+         "type":"Actor", 
+         "name":"Music", 
+         "components":[ 
+            { 
+               "type":"AudioComponent", 
+               "sound_name":"audio/music.mp3", 
+               "loop":true, 
+               "play_on_start":true 
+            } 
+         ] 
+      }, 
+      { 
+         "type":"Actor", 
+         "name":"Text", 
+         "transform":{ 
+            "position":[ 
+               40, 
+               30 
+            ], 
+            "scale":[ 
+               1, 
+               1 
+            ], 
+            "rotation":0 
+         }, 
+         "components":[ 
+            { 
+               "type":"TextComponent", 
+               "text":"Hello World!", 
+               "font_name":"fonts/Minecraftia-Regular.ttf", 
+               "font_size":16, 
+               "registration": [0.0, 0.5], 
+               "color":[255, 255, 0, 255] 
+            } 
+         ] 
       }
    ]
 }

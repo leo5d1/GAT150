@@ -1,4 +1,5 @@
 #include "Font.h"
+#include "Core/Logger.h"
 #include <SDL_ttf.h>
 
 namespace c14
@@ -32,6 +33,19 @@ namespace c14
 
 		// create texture (returns true/false if successful) 
 		return true;
+	}
+
+	SDL_Surface* Font::CreateSurface(const std::string& text, const Color& color)
+	{
+		SDL_Color c = *((SDL_Color*)(&color));
+		SDL_Surface* surface = TTF_RenderText_Solid(m_ttfFont, text.c_str(), c);
+
+		if (!surface)
+		{
+			LOG(SDL_GetError());
+		}
+
+		return surface;
 	}
 
 	void Font::Load(const std::string& filename, int fontSize)

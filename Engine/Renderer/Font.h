@@ -4,9 +4,12 @@
 #include <string>
 
 struct _TTF_Font;
+struct SDL_Surface;
 
 namespace c14
 {
+	class Color;
+
 	class Font : public Resource
 	{
 	public:
@@ -15,6 +18,7 @@ namespace c14
 		~Font();
 
 		bool Create(const std::string filename, ...) override;
+		SDL_Surface* CreateSurface(const std::string& text, const Color& color);
 
 		void Load(const std::string& filename, int fontSize);
 
