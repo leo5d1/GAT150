@@ -11,7 +11,7 @@ namespace c14
 	public:
 		PhysicsComponent() = default;
 
-		CLASS_DECLARTATION(PhysicsComponent)
+		CLASS_DECLARATION(PhysicsComponent)
 
 		void Update() override;
 

@@ -10,7 +10,7 @@ namespace c14
 		RBPhysicsComponent() = default;
 		~RBPhysicsComponent();
 
-		CLASS_DECLARTATION(RBPhysicsComponent)
+		CLASS_DECLARATION(RBPhysicsComponent)
 
 		void Initialize() override;
 		void Update() override;

@@ -8,7 +8,7 @@ namespace c14
 	class ModelComponent : public RenderComponent
 	{
 	public:
-		CLASS_DECLARTATION(ModelComponent)
+		CLASS_DECLARATION(ModelComponent)
 
 		virtual void Update() override;
 

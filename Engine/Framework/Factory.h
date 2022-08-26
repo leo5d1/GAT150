@@ -1,7 +1,7 @@
 #pragma once
 #include "Singleton.h"
+#include "Core/Logger.h"
 #include <memory>
-#include <string>
 #include <map>
 
 namespace c14
@@ -11,6 +11,7 @@ namespace c14
 	class CreatorBase
 	{
 	public:
+		virtual ~CreatorBase() = default;
 
 		virtual std::unique_ptr<GameObject> Create() = 0;
 	};
@@ -29,6 +30,8 @@ namespace c14
 	class PrefabCreator : public CreatorBase
 	{
 	public:
+		~PrefabCreator() = default;
+
 		PrefabCreator(std::unique_ptr<T> instance) : m_instance{ std::move(instance) } {}
 
 		virtual std::unique_ptr<GameObject> Create() override
@@ -43,6 +46,8 @@ namespace c14
 	class Factory : public Singleton<Factory>
 	{
 	public:
+		void Shutdown() { m_registry.clear(); }
+
 		template <typename T>
 		void Register(const std::string& key);
 
@@ -76,6 +81,8 @@ namespace c14
 		{
 			return std::unique_ptr<T>(dynamic_cast<T*>(iter->second->Create().release()));
 		}
+
+		LOG("error could not find key %s", key.c_str());
 
 		return std::unique_ptr<T>();
 	}

@@ -59,6 +59,11 @@ namespace c14
 
 	void PlayerComponent::OnCollisionEnter(Actor* other)
 	{
+		if (other->GetName() == "Coin")
+		{
+			other->SetDestroy();
+		}
+
 		std::cout << "Player enter\n";
 	}
 

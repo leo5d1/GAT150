@@ -8,6 +8,7 @@ namespace c14
 	{
 		name = other.name;
 		tag = other.tag;
+		m_transform = other.m_transform;
 		m_scene = other.m_scene;
 		
 		for (auto& component : other.m_components)
@@ -31,6 +32,11 @@ namespace c14
 
 	void Actor::Update()
 	{
+		if (!active)
+		{
+			return;
+		}
+
 		for (auto& component : m_components)
 		{
 			component->Update();
@@ -46,6 +52,11 @@ namespace c14
 
 	void Actor::Draw(Renderer& renderer)
 	{
+		if (!active)
+		{
+			return;
+		}
+
 		for (auto& component : m_components)
 		{
 			auto renderComponent = dynamic_cast<RenderComponent*>(component.get());
@@ -70,6 +81,7 @@ namespace c14
 	{
 		READ_DATA(value, tag);
 		READ_DATA(value, name);
+		READ_DATA(value, active);
 
 		if (value.HasMember("transform"))
 		{

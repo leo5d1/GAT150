@@ -15,7 +15,7 @@ namespace c14
 		Actor(const Actor& other);
 		Actor(const Transform& transform) : m_transform{ transform } {}
 
-		CLASS_DECLARTATION(Actor)
+		CLASS_DECLARATION(Actor)
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -40,6 +40,13 @@ namespace c14
 		const std::string& GetName() { return name; }
 		void SetName(const std::string& name) { this->name = name; }
 
+		void SetDestroy() { m_destroy = true; }
+
+		void SetActive(bool active = true) { this->active = active; }
+		bool IsActive() { return active; }
+
+		Scene* GetScene() { return m_scene; }
+
 		friend class Scene;
 		friend class PlayerComponent;
 
@@ -48,6 +55,7 @@ namespace c14
 	protected:
 		std::string name;
 		std::string tag;
+		bool active = true;
 
 		bool m_destroy = false;
 

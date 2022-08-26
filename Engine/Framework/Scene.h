@@ -18,7 +18,7 @@ namespace c14
 		Scene(const Scene& other) {}
 		~Scene() = default;
 
-		CLASS_DECLARTATION(Scene)
+		CLASS_DECLARATION(Scene)
 
 		void Initialize() override;
 		void Update() override;

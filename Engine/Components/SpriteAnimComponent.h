@@ -9,7 +9,7 @@ namespace c14
 	class SpriteAnimComponent : public RenderComponent
 	{
 	public:
-		CLASS_DECLARTATION(SpriteAnimComponent)
+		CLASS_DECLARATION(SpriteAnimComponent)
 
 		virtual void Update() override;
 

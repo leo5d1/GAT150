@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "MyGame.h"
 #include <iostream>
 
 using namespace std;
@@ -23,22 +24,8 @@ int main()
 	c14::g_renderer.setClearColor(c14::Color{ 20, 20, 20, 0 });
 
 	// create scene
-	c14::Scene scene;
-
-	rapidjson::Document document;
-	bool success = c14::json::Load("levels/level.txt", document);
-
-	scene.Read(document);
-	scene.Initialize();
-
-	for (int i = 0; i < 5; i++)
-	{
-		auto actor = c14::Factory::Instance().Create<c14::Actor>("Coin");
-		actor->m_transform.position = { c14::Randomf(0, 800), 100.0f};
-		actor->Initialize();
-
-		scene.AddActor(std::move(actor));
-	}
+	unique_ptr<MyGame> game = make_unique<MyGame>();
+	game->Initialize();
 	
 	bool quit = false;
 	while (!quit)
@@ -53,18 +40,21 @@ int main()
 		if (c14::g_inputSystem.GetKeyDown(c14::key_escape)) { quit = true; }
 
 		// update Scene
- 		scene.Update();
+ 		game->Update();
 
 		// renderer
 		
 		c14::g_renderer.BeginFrame();
 		
-		scene.Draw(c14::g_renderer);
+		game->Draw(c14::g_renderer);
 		
 		c14::g_renderer.EndFrame();
 	}
 	
-	scene.RemoveAll();
+	game->Shutdown();
+	game.reset();
+
+	c14::Factory::Instance().Shutdown();
 
 	c14::g_physicsSystem.Shutdown();
 	c14::g_resources.Shutdown();
