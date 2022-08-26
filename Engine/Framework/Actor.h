@@ -12,7 +12,10 @@ namespace c14
 	{
 	public:
 		Actor() = default;
+		Actor(const Actor& other);
 		Actor(const Transform& transform) : m_transform{ transform } {}
+
+		CLASS_DECLARTATION(Actor)
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -41,18 +44,16 @@ namespace c14
 		friend class PlayerComponent;
 
 		Transform m_transform;
+
 	protected:
 		std::string name;
 		std::string tag;
 
-
 		bool m_destroy = false;
-		//physics
-		Vector2 m_velocity;
-		float damping = 1;
 
 		Scene* m_scene = nullptr;
 		Actor* m_parent = nullptr;
+
 		std::vector<std::unique_ptr<Component>> m_components;
 		std::vector<std::unique_ptr<Actor>> m_children;
 	};

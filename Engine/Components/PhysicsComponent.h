@@ -11,6 +11,8 @@ namespace c14
 	public:
 		PhysicsComponent() = default;
 
+		CLASS_DECLARTATION(PhysicsComponent)
+
 		void Update() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;

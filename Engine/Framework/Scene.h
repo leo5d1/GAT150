@@ -15,7 +15,10 @@ namespace c14
 	public:
 		Scene() = default;
 		Scene(Game* game) : m_game{ game } {}
+		Scene(const Scene& other) {}
 		~Scene() = default;
+
+		CLASS_DECLARTATION(Scene)
 
 		void Initialize() override;
 		void Update() override;

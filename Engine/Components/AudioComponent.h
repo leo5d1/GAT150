@@ -12,6 +12,8 @@ namespace c14
 		AudioComponent() = default;
 		~AudioComponent();
 
+		CLASS_DECLARTATION(AudioComponent)
+
 		void Initialize() override;
 		void Update() override;
 

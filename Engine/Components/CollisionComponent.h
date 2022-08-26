@@ -12,6 +12,8 @@ namespace c14
 		using functionPtr = std::function<void(Actor*)>;
 
 	public:
+		CLASS_DECLARTATION(CollisionComponent)
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 

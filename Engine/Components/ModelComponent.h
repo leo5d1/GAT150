@@ -8,6 +8,8 @@ namespace c14
 	class ModelComponent : public RenderComponent
 	{
 	public:
+		CLASS_DECLARTATION(ModelComponent)
+
 		virtual void Update() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;

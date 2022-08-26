@@ -10,6 +10,8 @@ namespace c14
 		RBPhysicsComponent() = default;
 		~RBPhysicsComponent();
 
+		CLASS_DECLARTATION(RBPhysicsComponent)
+
 		void Initialize() override;
 		void Update() override;
 		virtual void ApplyForce(const Vector2& force) override;

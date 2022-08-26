@@ -16,12 +16,11 @@ int main()
 	c14::g_resources.Initialize();
 	c14::g_physicsSystem.Initialize();
 
+	c14::Engine::Instance().Register();
+
 	// create window
 	c14::g_renderer.CreateWindow("Neumont", 800, 600);
 	c14::g_renderer.setClearColor(c14::Color{ 20, 20, 20, 0 });
-
-	c14::Engine::Instance().Register();
-
 
 	// create scene
 	c14::Scene scene;
@@ -31,29 +30,40 @@ int main()
 
 	scene.Read(document);
 	scene.Initialize();
+
+	for (int i = 0; i < 5; i++)
 	{
-		bool quit = false;
-		while (!quit)
-		{
-			//update (engine)
-			c14::g_time.Tick();
-			c14::g_inputSystem.Update();
-			c14::g_audio.Update();
-			c14::g_physicsSystem.Update();
+		auto actor = c14::Factory::Instance().Create<c14::Actor>("Coin");
+		actor->m_transform.position = { c14::Randomf(0, 800), 100.0f};
+		actor->Initialize();
 
-			if (c14::g_inputSystem.GetKeyDown(c14::key_escape)) { quit = true; }
-
-			// update Scene
-			scene.Update();
-
-			// renderer
-			c14::g_renderer.BeginFrame();
-
-			scene.Draw(c14::g_renderer);
-
-			c14::g_renderer.EndFrame();
-		}
+		scene.AddActor(std::move(actor));
 	}
+	
+	bool quit = false;
+	while (!quit)
+	{
+			
+		//update (engine)
+		c14::g_time.Tick();
+		c14::g_inputSystem.Update();
+		c14::g_audio.Update();
+		c14::g_physicsSystem.Update();
+
+		if (c14::g_inputSystem.GetKeyDown(c14::key_escape)) { quit = true; }
+
+		// update Scene
+ 		scene.Update();
+
+		// renderer
+		
+		c14::g_renderer.BeginFrame();
+		
+		scene.Draw(c14::g_renderer);
+		
+		c14::g_renderer.EndFrame();
+	}
+	
 	scene.RemoveAll();
 
 	c14::g_physicsSystem.Shutdown();

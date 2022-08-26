@@ -10,6 +10,8 @@ namespace c14
 	public:
 		PlayerComponent() = default;
 
+		CLASS_DECLARTATION(PlayerComponent)
+
 		void Initialize() override;
 		void Update() override;
 

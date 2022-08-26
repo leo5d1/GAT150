@@ -9,6 +9,8 @@ namespace c14
 	class SpriteAnimComponent : public RenderComponent
 	{
 	public:
+		CLASS_DECLARTATION(SpriteAnimComponent)
+
 		virtual void Update() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;
