@@ -36,7 +36,7 @@ namespace c14
 
 	void SpriteComponent::Draw(Renderer& renderer)
 	{
-		renderer.Draw(m_texture, source, m_owner->m_transform);
+		renderer.Draw(m_texture, GetSource(), m_owner->m_transform);
 	}
 
 }

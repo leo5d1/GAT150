@@ -16,6 +16,8 @@ namespace c14
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
+		Rect& GetSource() override;
+
 		virtual void Draw(Renderer& renderer) override;
 
 	public:
@@ -31,7 +33,6 @@ namespace c14
 		int frame = 0;
 		float frameTimer = 0;
 
-		Rect source;
 		std::shared_ptr<Texture> m_texture;
 
 	};
