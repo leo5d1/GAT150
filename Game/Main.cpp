@@ -16,6 +16,7 @@ int main()
 	c14::g_audio.Initialize();
 	c14::g_resources.Initialize();
 	c14::g_physicsSystem.Initialize();
+	c14::g_eventManager.Initialize();
 
 	c14::Engine::Instance().Register();
 
@@ -36,6 +37,7 @@ int main()
 		c14::g_inputSystem.Update();
 		c14::g_audio.Update();
 		c14::g_physicsSystem.Update();
+		c14::g_eventManager.Update();
 
 		if (c14::g_inputSystem.GetKeyDown(c14::key_escape)) { quit = true; }
 
@@ -61,4 +63,5 @@ int main()
 	c14::g_inputSystem.Shutdown();
 	c14::g_audio.Shutdown();
 	c14::g_renderer.Shutdown();
+	c14::g_eventManager.Shutdown();
 }

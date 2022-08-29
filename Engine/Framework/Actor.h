@@ -41,6 +41,7 @@ namespace c14
 		void SetName(const std::string& name) { this->name = name; }
 
 		void SetDestroy() { m_destroy = true; }
+		bool IsDestroyed() { return m_destroy; }
 
 		void SetActive(bool active = true) { this->active = active; }
 		bool IsActive() { return active; }

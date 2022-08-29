@@ -61,6 +61,12 @@ namespace c14
 	{
 		if (other->GetName() == "Coin")
 		{
+			Event event;
+			event.name = "EVENT_ADD_POINTS";
+			event.data = 100;
+
+			g_eventManager.Notify(event);
+
 			other->SetDestroy();
 		}
 

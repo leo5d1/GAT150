@@ -14,6 +14,7 @@
 #include "Framework/Game.h"
 #include "Framework/Factory.h"
 #include "Framework/Singleton.h"
+#include "Framework/EventManager.h"
 
 #include "Components/PlayerComponent.h"
 #include "Components/AudioComponent.h"
@@ -40,6 +41,7 @@
 #include <memory>
 #include <vector>
 #include <list>
+#include <variant>
 
 namespace c14
 {
@@ -49,6 +51,7 @@ namespace c14
 	extern Time g_time;
 	extern ResourceManager g_resources;
 	extern PhysicsSystem g_physicsSystem;
+	extern EventManager g_eventManager;
 
 	class Engine : public Singleton<Engine>
 	{

@@ -112,12 +112,12 @@
       },
       {
          "type":"Actor",
-         "name":"Text",
-         "active":false,
+         "name":"Title",
+         "active":true,
          "transform":{
             "position":[
-               40,
-               30
+               400,
+               200
             ],
             "scale":[
                1,
@@ -130,9 +130,9 @@
                "type":"TextComponent",
                "text":"Hello World!",
                "font_name":"fonts/Minecraftia-Regular.ttf",
-               "font_size":16,
+               "font_size":48,
                "registration":[
-                  0.0,
+                  0.5,
                   0.5
                ],
                "color":[
