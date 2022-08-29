@@ -61,9 +61,9 @@ namespace c14
 	template<typename T>
 	inline T* Scene::GetActorFromName(const std::string& name)
 	{
-		for (auto actor : m_actors)
+		for (auto& actor : m_actors)
 		{
-			if (name == actor.GetName())
+			if (name == actor->GetName())
 			{
 				return dynamic_cast<T*>(actor.get());
 			}
@@ -77,9 +77,9 @@ namespace c14
 	{
 		std::vector<T*> result;
 
-		for (auto actor : m_actors)
+		for (auto& actor : m_actors)
 		{
-			if (tag == actor.GetTag())
+			if (tag == actor->GetTag())
 			{
 				T* TagActor = dynamic_cast<T*>(actor.get());
 				if (TagActor)
