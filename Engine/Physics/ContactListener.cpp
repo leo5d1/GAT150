@@ -10,16 +10,19 @@ namespace c14
 		b2Fixture* fixtureA = contact->GetFixtureA();
 		b2Fixture* fixtureB = contact->GetFixtureB();
 
+
 		if (fixtureA->GetUserData().pointer && fixtureB->GetUserData().pointer)
 		{
 			Actor* actorA = (Actor*)(fixtureA->GetUserData().pointer);
 			Actor* actorB = (Actor*)(fixtureB->GetUserData().pointer);
 
-			if (!actorA->IsDestroyed() && actorA->GetComponent<CollisionComponent>())
+			if (actorA->IsDestroyed() || actorB->IsDestroyed()) return;
+
+			if (actorA->GetComponent<CollisionComponent>())
 			{
 				actorA->GetComponent<CollisionComponent>()->OnCollisionEnter(actorB);
 			}
-			if (!actorB->IsDestroyed() && actorB->GetComponent<CollisionComponent>())
+			if (actorB->GetComponent<CollisionComponent>())
 			{
 				actorB->GetComponent<CollisionComponent>()->OnCollisionEnter(actorA);
 			}
@@ -35,6 +38,8 @@ namespace c14
 		{
 			Actor* actorA = (Actor*)(fixtureA->GetUserData().pointer);
 			Actor* actorB = (Actor*)(fixtureB->GetUserData().pointer);
+
+			if (actorA->IsDestroyed() || actorB->IsDestroyed()) return;
 
 			if (actorA->GetComponent<CollisionComponent>())
 			{

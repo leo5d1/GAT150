@@ -10,6 +10,7 @@ namespace c14
 	const uint32_t key_down = SDL_SCANCODE_S;
 	const uint32_t key_right = SDL_SCANCODE_D;
 	const uint32_t key_escape = SDL_SCANCODE_ESCAPE;
+	const uint32_t key_enter = SDL_SCANCODE_RETURN;
 	const uint32_t key_q = SDL_SCANCODE_Q;
 	const uint32_t key_e = SDL_SCANCODE_E;
 

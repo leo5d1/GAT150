@@ -1,11 +1,11 @@
 #pragma once
 #include "Framework/Component.h"
 #include "Physics/Collision.h"
+#include "CharacterComponent.h"
+
 namespace c14
 {
-	class Actor;
-
-	class PlayerComponent : public Component, public ICollision
+	class PlayerComponent : public CharacterComponent
 	{
 	public:
 		PlayerComponent() = default;
@@ -15,6 +15,7 @@ namespace c14
 		void Initialize() override;
 		void Update() override;
 
+		virtual void OnNotify(const Event& event) override;
 		virtual void OnCollisionEnter(Actor* other) override;
 		virtual void OnCollisionExit(Actor* other) override;
 
@@ -22,7 +23,9 @@ namespace c14
 		virtual bool Read(const rapidjson::Value& value) override;
 
 	public:
-		float speed{ 0 };
+		float jump = 300;
+
+		int m_groundCount = 0;
 
 	};
 }

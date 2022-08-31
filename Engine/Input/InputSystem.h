@@ -54,6 +54,7 @@ namespace c14
 	extern const uint32_t key_left;
 	extern const uint32_t key_right;
 	extern const uint32_t key_escape;
+	extern const uint32_t key_enter;
 	extern const uint32_t key_q;
 	extern const uint32_t key_e;
 

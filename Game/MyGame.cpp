@@ -1,12 +1,16 @@
 #include "MyGame.h"
 #include "Engine.h"
+#include "GameComponents/EnemyComponent.h"
 
 void MyGame::Initialize()
 {
+	REGISTER_CLASS(EnemyComponent);
+
+
 	m_scene = std::make_unique<c14::Scene>();
 
 	rapidjson::Document document;
-	std::vector<std::string> sceneNames = { "scenes/prefabs.txt", "scenes/tilemap.txt", "scenes/level.txt" };
+	std::vector<std::string> sceneNames = { "scenes/prefabs.txt", "scenes/level.txt", "scenes/tilemap.txt" };
 
 	for (auto sceneName : sceneNames)
 	{
@@ -24,6 +28,7 @@ void MyGame::Initialize()
 	
 
 	c14::g_eventManager.Subscribe("EVENT_ADD_POINTS", std::bind(&MyGame::OnAddPoints, this, std::placeholders::_1));
+	c14::g_eventManager.Subscribe("EVENT_PLAYER_DEAD", std::bind(&MyGame::OnAddPoints, this, std::placeholders::_1));
 }
 
 void MyGame::Shutdown()
@@ -39,7 +44,7 @@ void MyGame::Update()
 		m_scene->GetActorFromName("Title")->SetActive(true);
 		m_lives = 3;
 
-		if (c14::g_inputSystem.GetKeyState(c14::key_space) == c14::InputSystem::State::Pressed)
+		if (c14::g_inputSystem.GetKeyState(c14::key_enter) == c14::InputSystem::State::Pressed)
 		{
 			m_scene->GetActorFromName("Title")->SetActive(false);
 
@@ -49,10 +54,28 @@ void MyGame::Update()
 		break;
 
 	case gameState::startLevel:
+		m_scene->GetActorFromName("Score")->SetActive(true);
+		m_scene->GetActorFromName("Health")->SetActive(true);
+
 		for (int i = 0; i < 10; i++)
 		{
 			auto actor = c14::Factory::Instance().Create<c14::Actor>("Coin");
 			actor->m_transform.position = { c14::Randomf(0, 800), 100.0f };
+ 			actor->Initialize();
+
+			m_scene->AddActor(std::move(actor));
+		}
+		for (int i = 0; i < 3; i++)
+		{
+			auto actor = c14::Factory::Instance().Create<c14::Actor>("Demon");
+			actor->m_transform.position = { c14::Randomf(0, 800), 100.0f };
+			actor->Initialize();
+
+			m_scene->AddActor(std::move(actor));
+		}
+		{
+			auto actor = c14::Factory::Instance().Create<c14::Actor>("Player");
+			actor->m_transform.position = { 400.0f, 250.0f };
 			actor->Initialize();
 
 			m_scene->AddActor(std::move(actor));
@@ -61,6 +84,24 @@ void MyGame::Update()
 		break;
 
 	case gameState::game:
+	{
+		auto score = m_scene->GetActorFromName("Score");
+		auto component = score->GetComponent<c14::TextComponent>();
+		if (component)
+		{
+			component->SetText(std::to_string(m_score));
+		}
+	}
+	{
+		auto score = m_scene->GetActorFromName("Health");
+		auto component = score->GetComponent<c14::TextComponent>();
+		auto player = m_scene->GetActorFromName("Player");
+		auto pcomponent = player->GetComponent<c14::PlayerComponent>();
+		if (component)
+		{
+			component->SetText(std::to_string((int)pcomponent->health));
+		}
+	}
 		break;
 
 	case gameState::playerDead:
@@ -89,9 +130,6 @@ void MyGame::Draw(c14::Renderer& renderer)
 void MyGame::OnAddPoints(const c14::Event& event)
 {
 	AddPoints(std::get<int>(event.data));
-
-	std::cout << event.name << std::endl;
-	std::cout << GetScore() << std::endl;
 }
 
 void MyGame::OnPlayerDead(const c14::Event& event)
@@ -99,4 +137,19 @@ void MyGame::OnPlayerDead(const c14::Event& event)
 	m_gameState = gameState::playerDead;
 	m_lives--;
 	m_stateTimer = 3;
+}
+
+void MyGame::OnNotify(const c14::Event& event)
+{
+	if (event.name == "EVENT_ADD_POINTS")
+	{
+		OnAddPoints(event);
+	}
+
+	if (event.name == "EVENT_PLAYER_DEAD")
+	{
+		m_gameState = gameState::playerDead;
+		m_lives--;
+		m_stateTimer = 3;
+	}
 }

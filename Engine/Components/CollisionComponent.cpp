@@ -19,8 +19,17 @@ namespace c14
                 }
             }
 
+            data.size = data.size * scale_offset * m_owner->m_transform.scale;
 
-            g_physicsSystem.SetCollisionBox(component->m_body, data, m_owner);
+            if (component->m_body->GetType() == b2_staticBody)
+            {
+                g_physicsSystem.SetCollisionBoxStatic(component->m_body, data, m_owner);
+            }
+            else
+            {
+                g_physicsSystem.SetCollisionBox(component->m_body, data, m_owner);
+            }
+
         }
     }
 
@@ -56,6 +65,8 @@ namespace c14
         READ_DATA(value, data.friction);
         READ_DATA(value, data.restitution);
         READ_DATA(value, data.is_trigger);
+
+        READ_DATA(value, scale_offset);
 
 
         return true;

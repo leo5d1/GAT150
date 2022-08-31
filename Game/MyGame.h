@@ -4,7 +4,7 @@
 
 
 
-class MyGame : public c14::Game
+class MyGame : public c14::Game, public c14::INotify
 {
 public:
 	enum class gameState
@@ -23,6 +23,7 @@ public:
 	virtual void Update() override;
 	virtual void Draw(c14::Renderer& renderer) override;
 
+	virtual void OnNotify(const c14::Event& event) override;
 	void OnAddPoints(const c14::Event& event);
 	void OnPlayerDead(const c14::Event& event);
 
