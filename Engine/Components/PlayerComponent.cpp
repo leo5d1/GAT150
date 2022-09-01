@@ -153,6 +153,10 @@ namespace c14
 		{
 			m_groundCount--;
 		}
+		if (other->GetTag() == "Bounce")
+		{
+			m_groundCount--;
+		}
 	}
 }
 
