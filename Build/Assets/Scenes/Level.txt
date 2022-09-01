@@ -90,6 +90,40 @@
       },
       {
          "type":"Actor",
+         "name":"Death",
+         "active":false,
+         "transform":{
+            "position":[
+               400,
+               200
+            ],
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0
+         },
+         "components":[
+            {
+               "type":"TextComponent",
+               "text":"You Died.",
+               "font_name":"fonts/Minecraftia-Regular.ttf",
+               "font_size":48,
+               "registration":[
+                  0.5,
+                  0.5
+               ],
+               "color":[
+                  255,
+                  0,
+                  0,
+                  255
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Actor",
          "name":"Score",
          "active":false,
          "transform":{

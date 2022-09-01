@@ -97,6 +97,8 @@ namespace c14
 			std::cout << health << std::endl;
 			if (health <= 0)
 			{
+				m_owner->SetDestroy();
+
 				Event event;
 				event.name = "EVENT_PLAYER_DEAD";
 
@@ -131,6 +133,16 @@ namespace c14
 
 		if (other->GetTag() == "Ground")
 		{
+			m_groundCount++;
+		}
+
+		if (other->GetTag() == "Bounce")
+		{
+			auto component = m_owner->GetComponent<PhysicsComponent>();
+			if (component)
+			{
+				component->ApplyForce(Vector2::up * 80);
+			}
 			m_groundCount++;
 		}
 	}

@@ -27,8 +27,8 @@ void MyGame::Initialize()
 	
 	
 
-	c14::g_eventManager.Subscribe("EVENT_ADD_POINTS", std::bind(&MyGame::OnAddPoints, this, std::placeholders::_1));
-	c14::g_eventManager.Subscribe("EVENT_PLAYER_DEAD", std::bind(&MyGame::OnAddPoints, this, std::placeholders::_1));
+	c14::g_eventManager.Subscribe("EVENT_ADD_POINTS", std::bind(&MyGame::OnNotify, this, std::placeholders::_1));
+	c14::g_eventManager.Subscribe("EVENT_PLAYER_DEAD", std::bind(&MyGame::OnNotify, this, std::placeholders::_1));
 }
 
 void MyGame::Shutdown()
@@ -93,21 +93,28 @@ void MyGame::Update()
 		}
 	}
 	{
-		auto score = m_scene->GetActorFromName("Health");
-		auto component = score->GetComponent<c14::TextComponent>();
+		auto health = m_scene->GetActorFromName("Health");
+		auto component = health->GetComponent<c14::TextComponent>();
 		auto player = m_scene->GetActorFromName("Player");
-		auto pcomponent = player->GetComponent<c14::PlayerComponent>();
-		if (component)
+		if (player)
 		{
-			component->SetText(std::to_string((int)pcomponent->health));
+			auto pcomponent = player->GetComponent<c14::PlayerComponent>();
+			if (component)
+			{
+				component->SetText(std::to_string((int)pcomponent->health));
+			}
 		}
 	}
 		break;
 
 	case gameState::playerDead:
+
+		m_scene->GetActorFromName("Death")->SetActive(true);
+		
 		m_stateTimer -= c14::g_time.deltaTime;
 		if (m_stateTimer <= 0)
 		{
+			m_scene->GetActorFromName("Death")->SetActive(false);
 			m_gameState = (m_lives > 0) ? gameState::startLevel : gameState::gameOver;
 		}
 		break;
@@ -148,8 +155,6 @@ void MyGame::OnNotify(const c14::Event& event)
 
 	if (event.name == "EVENT_PLAYER_DEAD")
 	{
-		m_gameState = gameState::playerDead;
-		m_lives--;
-		m_stateTimer = 3;
+		OnPlayerDead(event);
 	}
 }
